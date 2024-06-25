@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Book Search</title>
+</head>
+<body>
+<p>Student Name: WU XIAOTAO</p>
+<p>Student ID: 21097724D</p>
+<p>Student Name: LYU Jiheng</p>
+<p>Student ID: 21106625D</p>
+
+<p>The time now is: <span id="current-time"></span></p>
+<p>The date is: <span id="current-date"></span></p>
+<script>
+ var currentDate = new Date();
+ document.getElementById("current-time").innerHTML = currentDate.getHours() + ":"  + currentDate.getMinutes();
+ document.getElementById("current-date").innerHTML = currentDate.toDateString();
+
+function validateForm() {
+    var isbn = document.getElementById("isbn").value;
+    var author = document.getElementById("author").value;
+
+    if (isbn.trim() === "" && author.trim() === "") {
+      alert("Fill in at least one entry");
+      return false;
+    }
+
+    if (isbn.trim() !== "" && isNaN(isbn)) {
+      alert("Invalid ISBN");
+      return false;
+    }
+
+    return true;
+  }
+</script>
+
+<form action = "QueryServlet" method="POST" onsubmit="return validateForm()"">
+<p>Please choose <strong>either ISBN or Author</strong> to search books: </p> 
+<p>Search by ISBN: <input type="text" id="isbn" name="isbn"></p> 
+<p>Search by Author: <input type="text" id="author" name="author"></p> 
+<input type="submit" value="Search">
+</form>
+</body>
+</html>

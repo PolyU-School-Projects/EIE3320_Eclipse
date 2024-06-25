@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Field Input Validation</title>
+<script>
+function checkInput(buttonType) {
+    var name = document.getElementById("name").value;
+    var telephone = document.getElementById("telephone").value;
+
+    if (name.trim() === "" && telephone.trim() === "") {
+        alert("The name field cannot be blank");
+    } else if (telephone.trim() === "") {
+        alert("The telephone field cannot be blank");
+    
+    } else {
+    	if (buttonType === "add") {
+            alert("Name = "+name+", telephone number = "+telephone+", the add button is pressed.")
+        } else if (buttonType === "search") {
+        	alert("Name = "+name+", telephone number = "+telephone+", the search button is pressed.")
+        }
+    }
+}
+</script>
+</head>
+<body>
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br><br>
+        
+        <label for="telephone">Telephone Number:</label>
+        <input type="text" id="telephone" name="telephone"><br><br>
+
+        <button type="button" onclick="checkInput('add')">Add</button>
+        <button type="button" onclick="checkInput('search')">Search</button>
+    </form>
+</body>
+</html>
